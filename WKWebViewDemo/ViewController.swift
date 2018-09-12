@@ -81,14 +81,14 @@ class ViewController: UIViewController {
         }
         
         btn.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(60.0)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(60.0)
             make.top.equalTo(webView.snp.bottom)
         }
         
         scrollerView.sizeToFit()
         
-        let myUrl = URL(string: "https://baidu.com")
+        let myUrl = URL(string: "http://news.sina.com.cn/c/xl/2018-09-11/doc-ihiixyeu6258416.shtml")
         let myRequest = URLRequest(url: myUrl!)
         self.webView.load(myRequest)
     }
@@ -115,10 +115,7 @@ extension ViewController: WKNavigationDelegate{
     // 页面加载完成之后调用
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         /// 获取网页title
-        self.title = self.webView.title
-        
-        //TODO: - 点赞view 待改
-//        self.view.addSubview(fabulousView)
+//        self.title = self.webView.title
         
         UIView.animate(withDuration: 0.5) {
             self.progressView.progress = 1.0
